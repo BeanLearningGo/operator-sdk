@@ -1,0 +1,27 @@
+# permissions for end users to view clouds.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: cloud-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: operator-sdk-lab
+    app.kubernetes.io/part-of: operator-sdk-lab
+    app.kubernetes.io/managed-by: kustomize
+  name: cloud-viewer-role
+rules:
+- apiGroups:
+  - platform.lab.beancloud.io
+  resources:
+  - clouds
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - platform.lab.beancloud.io
+  resources:
+  - clouds/status
+  verbs:
+  - get
